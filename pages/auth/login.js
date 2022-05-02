@@ -1,30 +1,33 @@
 import React, {useState} from 'react';
-import { connect } from 'react-redux';
-import { Login } from '@/components/auth/Login';
-import { useDispatch } from 'react-redux';
-import { loginRequest, logoutRequest, loginCancelled} from '@/modules/auth/login'
-
-const LoginPage = () => {
-      const [login, setLogin] =useState({
-        userid:'', password:''
-    })
+import {connect, useDispatch} from 'react-redux';
+import {loginRequest} from '@/modules/auth/login';
+import {Login} from '@/components';
+import {useRouter} from "next/router"
+import { round } from 'lodash';
+import { useSelector } from 'react-redux';
+const LoginPage = ({}) => {
+    const [user, setUser] = useState({userid: '', password: ''})
     const dispatch = useDispatch()
-    const onChange = e =>{
+    const router = useRouter()
+    const onChange = e => {
         e.preventDefault()
-        const{name, value} = e.target;
-        setLogin({...login,[name]: value})
+        const {name, value} = e.target;
+        setUser({
+            ...user,
+            [name]: value
+        })
     }
-    const onSubmit = e =>{
+    const {loginUser} = useSelector(state => state.login)
+    const onSubmit = e => {
         e.preventDefault()
-        alert('로그인정보'+JSON.stringify(login))
-        dispatch(loginRequest(login))
-        window.location.href='/'
-    }  
-    return (
-      <Login onChange={onChange} onSubmit={onSubmit}/>
-    );
+        alert(`로그인 정보 ${JSON.stringify(user)}`)
+        console.log(history)
+        dispatch(loginRequest(user))
+        console.log(' 모듈에 저장된 로그인값: '+JSON.stringify(loginUser))
+        router.push('/user/profile')
+    }
+    return (<Login onChange={onChange} onSubmit={onSubmit}/>);
 };
-
-const mapStateToProps = state => ({isLoggined: state.login.isLoggined})
-const loginActions = {loginRequest, logoutRequest, loginCancelled}
-export default connect(mapStateToProps, loginActions)(LoginPage)
+const mapStateToProps = state => ({loginUser: state.login.loginUser})
+const loginActions = {loginRequest}
+export default connect(mapStateToProps, loginActions)(LoginPage);

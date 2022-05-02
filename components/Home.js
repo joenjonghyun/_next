@@ -1,59 +1,74 @@
-import Head from 'next/head'
+import styles from "@/styles/Home.module.css";
 
 export function Home() {
     return (
-        
-<>
+        <> < header className = {styles.w3DisplayContainer+ ' ' + styles.w3Content+ ' ' + styles.w3Center} style = {{maxWidth:"1500px"}} > <img
+        className={styles.w3Image}
+            src="https://www.w3schools.com/w3images/photographer.jpg"
+            alt="Me"
+            width="1500"
+            height="600"/>
+        <div
+            className={styles.w3DisplayMiddle + ' ' + styles.w3PaddingLarge + ' ' + styles.w3Border + ' ' + styles.w3Wide + ' ' + styles.w3TextLightGrey + ' ' + styles.w3Center}>
+            <h1 className={styles.w3HideMedium+ ' ' +styles.w3HideSmall+ ' ' +styles.w3Xxxlarge}>JANE DOE</h1>
+            <h5 className={styles.w3HideLarge} style={{whiteSpace:"nowrap"}}>JANE DOE</h5>
+            <h3 className={styles.w3HideMedium+ ' ' +styles.w3HideSmall}>PHOTOGRAPHER</h3>
+        </div>
 
+        <div
+            className={styles.w3Bar+ ' ' +styles.w3LightGrey+ ' ' +styles.w3Round+ ' ' +styles.w3DisplayBottommiddle+ ' ' +styles.w3HideSmall}
+            style={{bottom:"-16px"}}>
+            <a href="#" className={styles.w3BarItem+ ' ' +styles.w3Button}>Home</a>
+            <a href="#portfolio" className={styles.w3BarItem+ ' ' +styles.w3Button}>Portfolio</a>
+            <a href="#contact" className={styles.w3BarItem+ ' ' +styles.w3Button}>Contact</a>
+        </div>
+    </header>
 
-<div className="w3-content" style="max-width:1500px">
+    <div className={styles.w3Center+ ' ' +styles.w3LightGrey+ ' ' +styles.w3Padding16+ ' ' +styles.w3HideLarge+ ' ' +styles.w3HideMedium}>
+        <div className={styles.w3Bar+ ' ' +styles.w3LightGrey}>
+            <a href="#" className={styles.w3BarItem+ ' ' +styles.w3Button}>Home</a>
+            <a href="#portfolio" className={styles.w3BarItem+ ' ' +styles.w3Button}>Portfolio</a>
+            <a href="#contact" className={styles.w3BarItem+ ' ' +styles.w3Button}>Contact</a>
+        </div>
+    </div>
+    <div className={styles.w3Content +' '+ styles.w3PaddingLarge +' '+ styles.w3MarginTop} id="portfolio">
 
-  <!-- Header -->
-  <header class="w3-container w3-xlarge w3-padding-24">
-    <a href="#" class="w3-left w3-button w3-white">MY ART</a>
-    <a href="#about" class="w3-right w3-button w3-white">About</a>
-  </header>
+        <div
+            className={styles.w3LightGrey +' ' + styles.w3PaddingLarge +' '+ styles.w3Padding32 +' '+ styles.w3MarginTop}
+            id="contact">
+            <h3 className={styles.w3Center}>Contact</h3>
+            <hr/>
+            <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed
+                mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan
+                tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent
+                tincidunt sed tellus.</p>
 
-  <!-- Photo Grid -->
-  <div class="w3-row">
-    <div class="w3-half">
-      <img src="/w3images/streetart.jpg" style="width:100%">
-      <img src="/w3images/streetart2.jpg" style="width:100%">
-      <img src="/w3images/streetart5.jpg" style="width:100%">
+            <form action="/action_page.php" target="_blank">
+                <div className={styles.w3Section}>
+                    <label>Name</label>
+                    <input className={styles.w3Border} type="text" required="" name="Name"/>
+                </div>
+                <div className={styles.w3Section}>
+                    <label>Email</label>
+                    <input className={styles.w3Input +' '+ styles.w3Border} type="text" required="" name="Email"/>
+                </div>
+                <div className={styles.w3Section}>
+                    <label>Message</label>
+                    <input className={styles.w3Input +' '+ styles.w3Border} required="" name="Message"/>
+                </div>
+                <button type="submit" className={styles.w3Button +' '+ styles.w3Block +' '+ styles.w3DarkGrey}>Send</button>
+            </form><br/>
+            <p>Powered by
+                <a
+                    href="https://www.w3schools.com/w3css/default.asp"
+                    target="_blank"
+                    className={styles.w3HoverTextGreen}>w3.css</a>
+            </p>
+
+        </div>
+
     </div>
 
-    <div class="w3-half">
-      <img src="/w3images/streetart3.jpg" style="width:100%">
-      <img src="/w3images/streetart4.jpg" style="width:100%">
-    </div>
-  </div>
-  
-
-</div>
-
-< class="w3-light-grey w3-padding-64 w3-center" id="about">
-  <h2>About</h2>
-  <img src="/w3images/boy.jpg" class="w3-image w3-padding-32" width="300" height="300">
-  <form style="margin:auto;width:60%" action="/action_page.php" target="_blank">
-    <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-    <p class="w3-large w3-text-pink">Do not hesitate to contact me!</p>
-    <div class="w3-section">
-      <label><b>Name</b></label>
-      <input class="w3-input w3-border" type="text" required="" name="Name">
-    </div>
-    <div class="w3-section">
-      <label><b>Email</b></label>
-      <input class="w3-input w3-border" type="text" required="" name="Email">
-    </div>
-    <div class="w3-section">
-      <label><b>Message</b></label>
-      <input class="w3-input w3-border" required="" name="Message">
-    </div>
-    <button type="submit" class="w3-button w3-block w3-dark-grey">Send</button>
-  </form>
-  <br>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </>
- 
     )
 }
