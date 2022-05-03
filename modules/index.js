@@ -1,17 +1,24 @@
-import { combineReducers } from "redux";
-import { all } from "redux-saga/effects";
-import counter, { counterSaga } from './basic/counter'
-import register, { registerSaga } from './auth/register'
-import login, { loginSaga } from './auth/login'
-import {history} from "./history";
-import {connectRouter} from "connected-react-router"
+import { combineReducers } from 'redux';
+import { all } from 'redux-saga/effects';
+import counter, { counterSaga } from './basic/counter';
+import register, { registerSaga } from './auth/register';
+import login, { loginSaga } from './auth/login';
+import {HYDRATE} from "next-redux-wrapper"
 const rootReducer = combineReducers({
-    counter,
-    register,
+    index: (state = {}, action) => {
+        switch (action.type) {
+            case HYDRATE:
+                console.log("HYDRATE", action);
+                return { ...state, ...action.payload };
+            default:
+                return state;
+        }
+    },
     login,
-    router: connectRouter(history)
-})
-export function* rootSaga(){
-    yield all([ counterSaga(), registerSaga(), loginSaga()])
+    register,
+});
+export function* rootSaga() {
+  yield all([counterSaga(), registerSaga(), loginSaga()]);
 }
-export default rootReducer
+
+export default rootReducer;

@@ -65,9 +65,7 @@ const loginAPI = payload => axios.post(
 
 function* logout(){
     try{
-        alert(' logout 실행중 ')
         const response = yield call(logoutAPI)
-        alert(` 로그아웃 성공: ${response.data.message}`)
         yield put({type: LOGOUT_SUCCESS})
         yield put({type: DELETE_TOKEN})
         yield put(window.location.href= "/")
@@ -86,7 +84,7 @@ function* loginCancel(action) {
         console.log(`로그인 취소`)
     } catch (error) {}
 }
-/**
+
 const login = handleActions({
     [HYDRATE]: (state, action) => ({
         ...state,
@@ -115,7 +113,7 @@ const login = handleActions({
         isLoggined: false
     }),
 }, initialState)
- */
+/**
 const login = (state = initialState, action) => {
     switch (action.type) {
         case HYDRATE:
@@ -125,10 +123,10 @@ const login = (state = initialState, action) => {
                 ...action.payload
             }
         case LOGIN_SUCCESS:
-            alert(' ### 사가 로그인 성공 ### ' + JSON.stringify(action.payload))
             return {
                 ...state,
-                loginUser: action.payload
+                loginUser: action.payload,
+                isLoggined: true
             }
         case LOGIN_FAILURE:
             console.log(' ### 로그인 실패 ### ' + action.payload)
@@ -140,5 +138,5 @@ const login = (state = initialState, action) => {
             return state;
     }
 }
-
+ */
 export default login
